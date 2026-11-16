@@ -1,0 +1,23 @@
+# Local test only: mirrors the Railway template (Phoenix + Postgres). Railway doesn't use this file.
+# Run from the repo root: docker compose -f local-test/compose.yaml up -d --build
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: localtestonly
+      POSTGRES_DB: railway
+    volumes: [pgdata:/var/lib/postgresql]
+  phoenix:
+    build: ..
+    environment:
+      PORT: "6006"
+      PHOENIX_SQL_DATABASE_URL: postgresql://postgres:localtestonly@postgres:5432/railway
+      PHOENIX_SECRET: 0123456789abcdef0123456789abcdef0123456789abcdef
+      PHOENIX_DEFAULT_ADMIN_INITIAL_PASSWORD: LocalTestPass123
+      PHOENIX_ROOT_URL: http://localhost:6006
+      PHOENIX_USE_SECURE_COOKIES: "false"
+    ports: ["6006:6006"]
+    depends_on: [postgres]
+volumes:
+  pgdata:
