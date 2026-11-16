@@ -34,7 +34,7 @@ Optional features you can add as variables later: SMTP (`PHOENIX_SMTP_HOSTNAME`,
 
 1. Open the service's Railway URL and sign in as `admin@localhost` with the value of `PHOENIX_DEFAULT_ADMIN_INITIAL_PASSWORD` (Phoenix service → Variables). Change the password in your profile.
 2. Create an API key under **Settings → API Keys**.
-3. Send traces: `PHOENIX_COLLECTOR_ENDPOINT=https://YOUR-DOMAIN` and `PHOENIX_API_KEY=<key>` with `phoenix-otel` / OpenInference, or OTLP/HTTP to `https://YOUR-DOMAIN/v1/traces`. Services in the same Railway project can use OTLP/gRPC at `http://${{Phoenix.RAILWAY_PRIVATE_DOMAIN}}:4317`.
+3. Send traces: `PHOENIX_COLLECTOR_ENDPOINT=https://YOUR-DOMAIN` and `PHOENIX_API_KEY=<key>` with `phoenix-otel` / OpenInference, or OTLP/HTTP (protobuf) to `https://YOUR-DOMAIN/v1/traces`. Services in the same Railway project can use OTLP/gRPC at `http://${{Phoenix.RAILWAY_PRIVATE_DOMAIN}}:4317`.
 
 ## Updates
 
